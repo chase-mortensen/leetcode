@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/palindrome-number/description/
+
 function isPalindrome(x: number): boolean {
     // without converting to a string
     if (x < 0) {
