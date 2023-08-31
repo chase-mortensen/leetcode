@@ -67,14 +67,32 @@ function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode
   return head
 };
 
-// const printMergedList = (list1: ListNode | null, list2: ListNode | null) => {
-//   let arr: number[] = []
-//   let head: ListNode | null = mergeTwoLists(list1, list2)
-//   while (head) {
-//     arr.push(head.val)
-//     head = head.next
-//   }
-//   console.log(arr)
-// }
+const printMergedList = (arr1: number[], arr2: number[]) => {
+  let arr: number[] = []
+  let head: ListNode | null = mergeTwoLists(convertArrayToList(arr1), convertArrayToList(arr2))
+  while (head) {
+    arr.push(head.val)
+    head = head.next
+  }
+  console.log(arr)
+}
 
-// printMergedList([1,2,4], [1,3,4])
+const convertArrayToList = (arr: number[]): ListNode | null => {
+  let head: ListNode | null = null
+  let curNode: ListNode | null = null
+  let prevNode: ListNode | null = null
+  if (arr.length) {
+    head = new ListNode(arr[0])
+    prevNode = head
+    for (let i = 1; i < arr.length; i++) {
+      curNode = new ListNode(arr[i])
+      prevNode.next = curNode
+      prevNode = curNode
+    }
+  }
+  return head
+}
+
+printMergedList([1,2,4], [1,3,4])
+printMergedList([], [])
+printMergedList([], [1])
